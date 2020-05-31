@@ -9,13 +9,15 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
 
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_tareo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_tareo_round"
+        android:roundIcon="@mipmap/ic_grano_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">

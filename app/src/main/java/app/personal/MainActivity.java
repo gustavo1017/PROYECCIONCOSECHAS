@@ -4,9 +4,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +16,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -74,10 +79,17 @@ public class MainActivity extends AppCompatActivity {
     TableLayout table;
     String  fecha, id_zonaTrabajo, zonatrabajo,id_clon, decripcion_clon;
     String  id_sector_g,descripcion_sector ,id_IM_g, descripcion_IM,qr = "";
+    String myIMEI;
     ArrayList<ObjectAgro> listClon = new ArrayList<ObjectAgro>();
     ArrayList<ObjectAgro> listSectores = new ArrayList<ObjectAgro>();
     ArrayList<ObjectAgro> listIndiceMazorca = new ArrayList<ObjectAgro>();
     ArrayList<ObjectAgro> workerZone = new ArrayList<ObjectAgro>();
+    float estadio1_int;
+    float estadio2_int;
+    float estadio3_int;
+    float estadio4_int;
+    String nroArbol;
+
 
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -277,6 +289,8 @@ public class MainActivity extends AppCompatActivity {
         final Button btnAdd = findViewById(R.id.btnAdd);
         Button btnSave = findViewById(R.id.btnSave);
 
+
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -288,65 +302,72 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (txtEstadio1.getText().toString().isEmpty()){
-                    MostrarDialogo("Ingrese Estadio 1");
+
+
+                if (txtEstadio1.getText().toString().isEmpty() && txtEstadio2.getText().toString().isEmpty()
+                        && txtEstadio3.getText().toString().isEmpty() && txtEstadio4.getText().toString().isEmpty()){
+                    MostrarDialogo("Debe llenar al menos un campo de estadio");
                     return;
                 }
 
-                try{
-                    float d = Float.parseFloat(txtEstadio1.getText().toString());
-                }catch (Exception e){
-                    MostrarDialogo("El campo Estadio 1 debe ser un decimal");
-                    return;
+                if (txtEstadio1.getText().toString().isEmpty()){
+                    estadio1_int = 0;
+                }else {
+                    try{
+                        estadio1_int = Float.parseFloat(txtEstadio1.getText().toString());
+                    }catch (Exception e){
+                        MostrarDialogo("El campo Estadio 1 debe ser un decimal");
+                        return;
+                    }
                 }
 
                 if (txtEstadio2.getText().toString().isEmpty()){
-
-                        MostrarDialogo("Ingrese Estadio 2");
+                    estadio2_int = 0;
+                }else{
+                    try{
+                        estadio2_int = Float.parseFloat(txtEstadio2.getText().toString());
+                    }catch (Exception e){
+                        MostrarDialogo("El campo Estadio 2 debe ser un decimal");
                         return;
+                    }
                 }
 
-                try{
-                    float a = Float.parseFloat(txtEstadio2.getText().toString());
-                }catch (Exception e){
-                    MostrarDialogo("El campo Estadio 2 debe ser un decimal");
-                    return;
-                }
+
 
                 if (txtNroArbol.getText().toString().isEmpty()){
-                    MostrarDialogo("Ingrese Nro. Arbol");
-                    return;
-                }
-
-                try{
-                    int b = Integer.parseInt(txtNroArbol.getText().toString());
-                }catch (Exception e){
-                    MostrarDialogo("El campo arbol debe ser un entero");
-                    return;
+                    nroArbol = "0";
+                }else {
+                    try{
+                        int b = Integer.parseInt(txtNroArbol.getText().toString());
+                        nroArbol = String.valueOf(b);
+                    }catch (Exception e){
+                        MostrarDialogo("El campo arbol debe ser un entero");
+                        return;
+                    }
                 }
 
                 if (txtEstadio3.getText().toString().isEmpty()){
-                    MostrarDialogo("Ingrese Estadio 3");
-                    return;
+                    estadio3_int = 0;
+                }else {
+                    try{
+                        estadio3_int = Float.parseFloat(txtEstadio3.getText().toString());
+                    }catch (Exception e){
+                        MostrarDialogo("El campo Estadio 3 debe ser un decimal");
+                        return;
+                    }
                 }
 
-                try{
-                    float c = Float.parseFloat(txtEstadio3.getText().toString());
-                }catch (Exception e){
-                    MostrarDialogo("El campo Estadio 3 debe ser un decimal");
-                    return;
-                }
+
 
                 if (txtEstadio4.getText().toString().isEmpty()){
-                    MostrarDialogo("Ingrese Estadio 4");
-                    return;
-                }
-
-                try{
-                    float c = Float.parseFloat(txtEstadio4.getText().toString());
-                }catch (Exception e){
-                    MostrarDialogo("El campo Estadio 4 debe ser un decimal");
-                    return;
+                    estadio4_int = 0;
+                }else {
+                    try{
+                        estadio4_int = Float.parseFloat(txtEstadio4.getText().toString());
+                    }catch (Exception e){
+                        MostrarDialogo("El campo Estadio 4 debe ser un decimal");
+                        return;
+                    }
                 }
 
                 if (dtpFecha.getText().toString().isEmpty()) {
@@ -374,17 +395,18 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (current_idPC.length() == 0) {
-                    myDatabase.insertMapeo2(fecha,id_zonaTrabajo,  id_sector_g, id_clon, id_IM_g,txtNroArbol.getText().toString() ,
-                            txtEstadio1.getText().toString(),
-                             txtEstadio2.getText().toString(),
-                            txtEstadio3.getText().toString(), txtEstadio4.getText().toString(),
+                    myDatabase.insertMapeo2(fecha,id_zonaTrabajo,  id_sector_g, id_clon, id_IM_g,nroArbol ,
+                            estadio1_int,
+                            estadio2_int,
+                            estadio3_int, estadio4_int,
                             txtQr.getText().toString());
 
                     MostrarDialogo("Se agrego la información");
                 } else {
-                    myDatabase.updateMapeo2(current_idPC,fecha,id_zonaTrabajo,  id_sector_g, id_clon, id_IM_g,  txtNroArbol.getText().toString() ,txtEstadio1.getText().toString(),
-                            txtEstadio2.getText().toString(),
-                            txtEstadio3.getText().toString(), txtEstadio4.getText().toString(),
+                    myDatabase.updateMapeo2(current_idPC,fecha,id_zonaTrabajo,  id_sector_g, id_clon, id_IM_g, nroArbol ,
+                            estadio1_int,
+                            estadio2_int,
+                            estadio3_int, estadio4_int,
                             txtQr.getText().toString());
 
                     MostrarDialogo("Se actualizo la información");
@@ -475,9 +497,11 @@ public class MainActivity extends AppCompatActivity {
         btnExport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String Android_id = Settings.Secure.getString(getContentResolver(),
+                        Settings.Secure.ANDROID_ID);
                 verifyStoragePermissions();
                 // myDatabase.writeExcelFile(0, dniSupervisor);
-                File txt = myDatabase.writeTXTFile(dniSupervisor);
+                File txt = myDatabase.writeTXTFile(Android_id);
                 if (txt != null) {
                     MostrarDialogo("Se exporto satisfactoriamente");
                     myDatabase.deleteAllProyeccionCosechas();
@@ -545,22 +569,44 @@ public class MainActivity extends AppCompatActivity {
     private void RestoreDatabase() {
         recordsInventario = myDatabase.QueryTable2(dniSupervisor);
         table.removeAllViews();
+        int permissionCheck = ContextCompat.checkSelfPermission(
+                this, android.Manifest.permission.READ_PHONE_STATE );
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            Log.i("Mensaje", "No se tiene permiso.");
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_PHONE_STATE }, 225);
+        } else {
+            Log.i("Mensaje", "Se tiene permiso!");
+        }
+
+
+
+        String strZonaTrabajo = "";
+        String strParcela = "";
+        String strIndiceMaiz = "";
+        String strClon = "";
 
         for (int i = 0; i < recordsInventario.size(); i++) {
             final TableRow row = (TableRow) LayoutInflater.from(MainActivity.this).inflate(R.layout.attrib_row, null);
+
             ((TextView) row.findViewById(R.id.tdId)).setText(String.valueOf(recordsInventario.get(i).id_PC));
-            ((TextView) row.findViewById(R.id.tdDate)).setText(String.valueOf(recordsInventario.get(i).zonatrabajo));
-            ((TextView) row.findViewById(R.id.tdPersonal)).setText(recordsInventario.get(i).zonatrabajo);
-            ((TextView) row.findViewById(R.id.tdWorkerZone)).setText(recordsInventario.get(i).estadio1);
-            ((TextView) row.findViewById(R.id.tdActivity)).setText(recordsInventario.get(i).estadio2);
-            ((TextView) row.findViewById(R.id.tdIdActivity)).setText(recordsInventario.get(i).estadio2);
-            ((TextView) row.findViewById(R.id.tdHour)).setText(recordsInventario.get(i).estadio3);
-            ((TextView) row.findViewById(R.id.tdAdvance)).setText(recordsInventario.get(i).estadio4);
+            strZonaTrabajo = recordsInventario.get(i).zonatrabajo.replace(" ","");
+            ((TextView) row.findViewById(R.id.ZonaTrabajo)).setText(strZonaTrabajo);
+            ((TextView) row.findViewById(R.id.ZonaTrabajo2)).setText(String.valueOf(recordsInventario.get(i).zonatrabajo));
+            strParcela = recordsInventario.get(i).sector.replace(" ","");
+            ((TextView) row.findViewById(R.id.tdParcela)).setText(strParcela);
+            ((TextView) row.findViewById(R.id.tdParcela2)).setText(String.valueOf(recordsInventario.get(i).sector));
+            strIndiceMaiz = recordsInventario.get(i).IM.replace(" ", "");
+            ((TextView) row.findViewById(R.id.tdIndiceMaiz)).setText(strIndiceMaiz);
+            ((TextView) row.findViewById(R.id.tdIndiceMaiz2)).setText(recordsInventario.get(i).IM);
+            strClon = recordsInventario.get(i).clone.replace(" ", "");
+            ((TextView) row.findViewById(R.id.tdClon)).setText(strClon);
+            ((TextView) row.findViewById(R.id.tdClon2)).setText(recordsInventario.get(i).clone);
+            ((TextView) row.findViewById(R.id.tdNroArbol)).setText(recordsInventario.get(i).nro_arbol);
+            ((TextView) row.findViewById(R.id.tdEstadio1)).setText(recordsInventario.get(i).estadio1);
+            ((TextView) row.findViewById(R.id.tdEstadio2)).setText(recordsInventario.get(i).estadio2);
+            ((TextView) row.findViewById(R.id.tdEstadio3)).setText(recordsInventario.get(i).estadio3);
+            ((TextView) row.findViewById(R.id.tdEstadio4)).setText(recordsInventario.get(i).estadio4);
             ((TextView) row.findViewById(R.id.tdQR)).setText(recordsInventario.get(i).qr);
-            ((TextView) row.findViewById(R.id.id_clone_x)).setText(recordsInventario.get(i).id_clon);
-            ((TextView) row.findViewById(R.id.nro_arbol_x)).setText(recordsInventario.get(i).nro_arbol);
-            ((TextView) row.findViewById(R.id.id_edad_x)).setText(recordsInventario.get(i).id_sector);
-            ((TextView) row.findViewById(R.id.dt_x)).setText(recordsInventario.get(i).id_IM);
 
             row.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
@@ -569,6 +615,16 @@ public class MainActivity extends AppCompatActivity {
                     TableRow t = (TableRow) view;
                     TextView firstTextView = (TextView) t.getChildAt(0);
                     String firstText = firstTextView.getText().toString();
+
+                    workerZone = myDatabase.RestoreFromDbZonaTrabajo();
+                    LLenar(spWorkerZone, 2);
+                    listClon = myDatabase.RestoreFromDbClon();
+                    LLenar(spClon, 5);
+                    listIndiceMazorca = myDatabase.RestoreFromDbIndiceMazorca();
+                    LLenar(spIndiceMazorca,15);
+
+                    listSectores = myDatabase.RestoreFromDbSectores();
+                    LLenar(spSectores,16);
 
                     if (current_idPC.equals(firstText)) {
                         current_idPC = "";
@@ -582,16 +638,16 @@ public class MainActivity extends AppCompatActivity {
 
                     current_idPC = firstText;
 
-                    selectRow(((TextView) t.getChildAt(4)).getText().toString(),
-                            ((TextView) t.getChildAt(7)).getText().toString(),
-                            ((TextView) t.getChildAt(8)).getText().toString(),
-                            ((TextView) t.getChildAt(9)).getText().toString(),
+                    selectRow(((TextView) t.getChildAt(11)).getText().toString(),
                             ((TextView) t.getChildAt(13)).getText().toString(),
-                            ((TextView) t.getChildAt(11)).getText().toString(),
-                            ((TextView) t.getChildAt(14)).getText().toString(),
                             ((TextView) t.getChildAt(15)).getText().toString(),
+                            ((TextView) t.getChildAt(17)).getText().toString(),
+                            ((TextView) t.getChildAt(9)).getText().toString(),
+                            ((TextView) t.getChildAt(8)).getText().toString(),
+                            ((TextView) t.getChildAt(4)).getText().toString(),
+                            ((TextView) t.getChildAt(6)).getText().toString(),
                             ((TextView) t.getChildAt(2)).getText().toString(),
-                            ((TextView) t.getChildAt(10)).getText().toString());
+                            ((TextView) t.getChildAt(19)).getText().toString());
 
 //                    Toast.makeText(getApplicationContext(), "value was " + firstText,
 //                            Toast.LENGTH_LONG).show();
@@ -614,7 +670,7 @@ public class MainActivity extends AppCompatActivity {
             asp1.add("Seleccione Zona de Trabajo");
 
 
-            for (int i = 0; i < workerZone.size(); i++) {
+            for (int i = 1; i < workerZone.size(); i++) {
                 asp1.add(workerZone.get(i).descripcion);
             }
         }
@@ -622,7 +678,7 @@ public class MainActivity extends AppCompatActivity {
         if (type == 5) {
             asp1.add("Seleccione Clon");
 
-            for (int i = 0; i < listClon.size(); i++) {
+            for (int i = 1; i < listClon.size(); i++) {
                 asp1.add(listClon.get(i).descripcion);
             }
         }
@@ -630,7 +686,7 @@ public class MainActivity extends AppCompatActivity {
         if (type == 15) {
             asp1.add("Seleccione Indice Mazorca");
 
-            for (int i = 0; i < listIndiceMazorca.size(); i++) {
+            for (int i = 1; i < listIndiceMazorca.size(); i++) {
                 asp1.add(listIndiceMazorca.get(i).descripcion);
             }
         }
@@ -638,7 +694,7 @@ public class MainActivity extends AppCompatActivity {
         if (type == 16) {
             asp1.add("Seleccione Sector");
 
-            for (int i = 0; i < listSectores.size(); i++) {
+            for (int i = 1; i < listSectores.size(); i++) {
                 asp1.add(listSectores.get(i).descripcion);
             }
         }

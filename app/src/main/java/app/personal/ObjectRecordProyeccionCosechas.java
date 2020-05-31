@@ -7,6 +7,7 @@ public class ObjectRecordProyeccionCosechas {
     public String zonatrabajo;
     public String id_sector;
     public String sector;
+    public String clone;
     public String id_clon;
     public String id_IM;
     public String IM;

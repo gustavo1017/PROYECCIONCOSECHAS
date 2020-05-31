@@ -9,78 +9,159 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tdDate"
-        android:layout_width="0dp"
-        android:layout_weight="0"
-        android:gravity="center"
-        android:textSize="0dp"
-        android:textStyle="bold" />
-
-
-    <TextView
-        android:id="@+id/tdPersonal"
+        android:id="@+id/ZonaTrabajo"
         android:layout_width="0dp"
         android:layout_weight="0.6"
         android:gravity="center"
-        android:textSize="14dp"
+        android:textSize="11dp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tdIdPersonal"
-        android:layout_width="0dp"
-        android:layout_weight="0"
-        android:gravity="center"
-        android:textSize="0dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tdWorkerZone"
+        android:id="@+id/ZonaTrabajo2"
         android:layout_width="0dp"
         android:layout_weight="0.6"
         android:gravity="center"
-        android:textSize="14dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tdIdWorkerZone"
-        android:layout_width="0dp"
-        android:layout_weight="0"
-        android:gravity="center"
-        android:textSize="0dp"
+        android:textSize="11dp"
+        android:visibility="gone"
         android:textStyle="bold" />
 
 
     <TextView
-        android:id="@+id/tdActivity"
+        android:id="@+id/tdParcela"
         android:layout_width="0dp"
         android:layout_weight="0.6"
         android:gravity="center"
-        android:textSize="14dp"
+        android:textSize="11dp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tdIdActivity"
-        android:layout_width="0dp"
-        android:layout_weight="0"
-        android:gravity="center"
-        android:textSize="0dp"
-        android:textStyle="bold" />
-
-
-    <TextView
-        android:id="@+id/tdHour"
+        android:id="@+id/tdParcela2"
         android:layout_width="0dp"
         android:layout_weight="0.6"
         android:gravity="center"
-        android:textSize="14dp"
+        android:textSize="11dp"
+        android:visibility="gone"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tdAdvance"
+        android:id="@+id/tdIndiceMaiz"
         android:layout_width="0dp"
         android:layout_weight="0.6"
         android:gravity="center"
-        android:textSize="14dp"
+        android:textSize="11dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tdIndiceMaiz2"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textSize="11dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tdClon"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:gravity="center"
+        android:textSize="11dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tdClon2"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textSize="11dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tdNroArbol"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:gravity="center"
+        android:textSize="11dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tdNroArbol2"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:gravity="center"
+        android:textSize="11dp"
+        android:visibility="gone"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/tdEstadio1"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:gravity="center"
+        android:textSize="11dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tdEstadio1_"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textSize="11dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tdEstadio2"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:gravity="center"
+        android:textSize="11dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tdEstadio2_"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textSize="11dp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/tdEstadio3"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:gravity="center"
+        android:textSize="11dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tdEstadio3_"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textSize="11dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tdEstadio4"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:gravity="center"
+        android:textSize="11dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tdEstadio4_"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textSize="11dp"
         android:textStyle="bold" />
 
     <TextView
@@ -88,55 +169,17 @@
         android:layout_width="0dp"
         android:layout_weight="0.6"
         android:gravity="center"
+        android:textSize="11dp"
         android:textStyle="bold" />
+
     <TextView
-        android:id="@+id/id_clone_x"
+        android:id="@+id/tdQR2"
         android:layout_width="0dp"
         android:layout_weight="0.6"
         android:gravity="center"
         android:visibility="gone"
+        android:textSize="11dp"
         android:textStyle="bold" />
-    <TextView
-        android:id="@+id/linea_x"
-        android:layout_width="0dp"
-        android:layout_weight="0.6"
-        android:gravity="center"
-        android:visibility="gone"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/nro_arbol_x"
-        android:layout_width="0dp"
-        android:layout_weight="0.6"
-        android:gravity="center"
-        android:visibility="gone"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/id_edad_x"
-        android:layout_width="0dp"
-        android:layout_weight="0.6"
-        android:gravity="center"
-        android:visibility="gone"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/dt_x"
-        android:layout_width="0dp"
-        android:layout_weight="0.6"
-        android:gravity="center"
-        android:visibility="gone"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/observaciones_x"
-        android:layout_width="0dp"
-        android:layout_weight="0.6"
-        android:gravity="center"
-        android:visibility="gone"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/fechaauditoria_x"
-        android:layout_width="0dp"
-        android:layout_weight="0.6"
-        android:gravity="center"
-        android:visibility="gone"
-        android:textStyle="bold" />
+
 
 </TableRow>

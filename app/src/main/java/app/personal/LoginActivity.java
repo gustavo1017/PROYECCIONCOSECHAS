@@ -148,10 +148,22 @@ public class LoginActivity extends AppCompatActivity {
                                     i.putExtra("dniSupervisor", usernameEditText.getText().toString());
                                     startActivity(i);
                                 } else {
-                                    MostrarDialogo("Ingrese un usuario valido");
+                                    runOnUiThread(new Runnable() {
+                                        public void run() {
+                                            progressDialog.dismiss();
+                                            //Toast.makeText(this, cadena, Toast.LENGTH_LONG).show();// Aqui me sale el error
+                                            Toast.makeText(getApplicationContext(),"El usuario no existe en agrisoft", Toast.LENGTH_LONG).show();
+                                        }
+                                    });
                                 }
                             } else {
-                                MostrarDialogo("Usuario no valido");
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        progressDialog.dismiss();
+                                        //Toast.makeText(this, cadena, Toast.LENGTH_LONG).show();// Aqui me sale el error
+                                        Toast.makeText(getApplicationContext(),"El usuario no existe en agrisoft", Toast.LENGTH_LONG).show();
+                                    }
+                                });
                             }
                         }
                         catch (Exception e)
@@ -193,11 +205,18 @@ public class LoginActivity extends AppCompatActivity {
         File folder = new File(Environment.getExternalStorageDirectory().toString() +
                 File.separator + "personal");
 
+        File foldertextoagro = new File(Environment.getExternalStorageDirectory().toString() +
+                File.separator + "archivostextoagro");
+
         boolean success = true;
         if (!folder.exists()) {
             success = folder.mkdirs();
         } else {
             myDatabase.LeerInicial(LoginActivity.this);
+        }
+
+        if (!foldertextoagro.exists()) {
+            success = foldertextoagro.mkdirs();
         }
 
         if (success) {
@@ -212,7 +231,7 @@ public class LoginActivity extends AppCompatActivity {
                 File.separator + "personal" + File.separator + "analisis1.xls");
 
         if (!folder.exists()) {
-            String response = downloadFile("https://www.agrisoftweb.com/api/excel/exportar?user=" + user);
+            String response = downloadFile("http://www.agrisoftweb.com:85/api/excel/exportar?user=" + user);
             if (response.equals("OK")) {
                 myDatabase.LeerInicial(LoginActivity.this);
             }

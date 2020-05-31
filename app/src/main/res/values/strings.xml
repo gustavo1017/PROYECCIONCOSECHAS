@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PROYECCIONCOSECHAS</string>
+    <string name="app_name">PROYECCION</string>
     <!-- Strings related to login -->
     <string name="dni_supervisor">usuario</string>
     <string name="prompt_password">Password</string>
