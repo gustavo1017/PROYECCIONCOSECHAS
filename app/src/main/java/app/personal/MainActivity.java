@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (listClon.size() > 0) {
                     if (!(i == 0)) {
-                        int pos = i - 1;
+                        int pos = i;
                         id_clon = listClon.get(pos).id;
                         decripcion_clon = listClon.get(pos).descripcion;
                     }
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (listSectores.size() > 0) {
                     if (!(i == 0)) {
-                        int pos = i - 1;
+                        int pos = i;
                         id_sector_g = listSectores.get(pos).id;
                         descripcion_sector = listSectores.get(pos).descripcion;
                     }
@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (listIndiceMazorca.size() > 0) {
                     if (!(i == 0)) {
-                        int pos = i - 1;
+                        int pos = i;
                         id_IM_g = listIndiceMazorca.get(pos).id;
                         descripcion_IM = listIndiceMazorca.get(pos).descripcion;
                     }
@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (workerZone.size() > 0) {
                     if (!(i == 0)) {
-                        int pos = i - 1;
+                        int pos = i;
                         id_zonaTrabajo = workerZone.get(pos).id;
                         zonatrabajo = workerZone.get(pos).descripcion;
                     }
@@ -516,7 +516,7 @@ public class MainActivity extends AppCompatActivity {
                     editor.putBoolean("firstLoad", false);
                     editor.apply();
                 } else {
-                    MostrarDialogo("Error al exportar");
+                    MostrarDialogo("No hay ningun dato que exportar");
                 }
 
             }
@@ -590,16 +590,32 @@ public class MainActivity extends AppCompatActivity {
 
             ((TextView) row.findViewById(R.id.tdId)).setText(String.valueOf(recordsInventario.get(i).id_PC));
             strZonaTrabajo = recordsInventario.get(i).zonatrabajo.replace(" ","");
-            ((TextView) row.findViewById(R.id.ZonaTrabajo)).setText(strZonaTrabajo);
+            if(strZonaTrabajo.length() > 5 ){
+                ((TextView) row.findViewById(R.id.ZonaTrabajo)).setText(strZonaTrabajo.substring(0,5));
+            }else {
+                ((TextView) row.findViewById(R.id.ZonaTrabajo)).setText(String.valueOf(recordsInventario.get(i).zonatrabajo));
+            }
             ((TextView) row.findViewById(R.id.ZonaTrabajo2)).setText(String.valueOf(recordsInventario.get(i).zonatrabajo));
             strParcela = recordsInventario.get(i).sector.replace(" ","");
-            ((TextView) row.findViewById(R.id.tdParcela)).setText(strParcela);
+            if(strParcela.length() > 5){
+                ((TextView) row.findViewById(R.id.tdParcela)).setText(strParcela.substring(0,5));
+            }else {
+                ((TextView) row.findViewById(R.id.tdParcela)).setText(String.valueOf(recordsInventario.get(i).sector));
+            }
             ((TextView) row.findViewById(R.id.tdParcela2)).setText(String.valueOf(recordsInventario.get(i).sector));
             strIndiceMaiz = recordsInventario.get(i).IM.replace(" ", "");
-            ((TextView) row.findViewById(R.id.tdIndiceMaiz)).setText(strIndiceMaiz);
+            if (strIndiceMaiz.length()> 5){
+                ((TextView) row.findViewById(R.id.tdIndiceMaiz)).setText(strIndiceMaiz.substring(0,5));
+            }else {
+                ((TextView) row.findViewById(R.id.tdIndiceMaiz)).setText(recordsInventario.get(i).IM);
+            }
             ((TextView) row.findViewById(R.id.tdIndiceMaiz2)).setText(recordsInventario.get(i).IM);
             strClon = recordsInventario.get(i).clone.replace(" ", "");
-            ((TextView) row.findViewById(R.id.tdClon)).setText(strClon);
+            if (strClon.length() > 5){
+                ((TextView) row.findViewById(R.id.tdClon)).setText(strClon.substring(0,5));
+            }else {
+                ((TextView) row.findViewById(R.id.tdClon)).setText(recordsInventario.get(i).clone);
+            }
             ((TextView) row.findViewById(R.id.tdClon2)).setText(recordsInventario.get(i).clone);
             ((TextView) row.findViewById(R.id.tdNroArbol)).setText(recordsInventario.get(i).nro_arbol);
             ((TextView) row.findViewById(R.id.tdEstadio1)).setText(recordsInventario.get(i).estadio1);
