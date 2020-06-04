@@ -15,6 +15,7 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Environment;
 import android.os.StrictMode;
@@ -58,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
     private static DownloadManager downloadManager;
     DataBaseHelper myDatabase;
     private ProgressDialog progressDialog;
+    Toolbar toolbar;
 
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -73,6 +75,10 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        toolbar = findViewById(R.id.toolbarCustom);
+        setSupportActionBar(toolbar);
+
         myDatabase = new DataBaseHelper(LoginActivity.this);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);

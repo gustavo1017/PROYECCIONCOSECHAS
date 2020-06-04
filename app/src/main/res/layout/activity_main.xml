@@ -1,69 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <include layout="@layout/custom_toolbar" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/lyResumen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/white"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtSupervisor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Supervisor: 76035098" />
-
             <LinearLayout
+                android:id="@+id/lyResumen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
-                    android:id="@+id/tvFecha"
+                    android:id="@+id/txtSupervisor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Supervisor: 76035098" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tvFecha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fecha: " />
+
+                    <EditText
+                        android:id="@+id/dtpFecha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="yyyy/mm/dd"
+                        android:textColorHint="#717171" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="5">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/tvDt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Estadio 1: " />
+
+                            <EditText
+                                android:id="@+id/txtEstadio1"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+
+                                android:inputType="text"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/tvNroLinea"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Estadio 2: " />
+
+                            <EditText
+                                android:id="@+id/txtEstadio2"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:inputType="text"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+                            <TextView
+                                android:id="@+id/tvEdad"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Estadio 3: " />
+
+                            <EditText
+                                android:id="@+id/txtEstadio3"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:inputType="text"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+                            <TextView
+                                android:id="@+id/tvObservacion"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Estadio 4 " />
+
+                            <EditText
+                                android:id="@+id/txtEstadio4"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:inputType="text"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+                            <TextView
+                                android:id="@+id/tvNroArbol"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Nro. Arbol: " />
+
+                            <EditText
+                                android:id="@+id/txtNroArbol"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:inputType="text"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+
+                <TextView
+                    android:id="@+id/tvCuadrilla"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:text="Fecha: " />
 
-                <EditText
-                    android:id="@+id/dtpFecha"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/lyQR"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:hint="yyyy/mm/dd"
-                    android:textColorHint="#717171" />
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtQr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:text="QR: LOSTIGRES" />
+
+                    <Button
+                        android:id="@+id/btnQrReader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@color/colorPrimary"
+                        android:text="Escanear Qr"
+                        android:textColor="@color/cardview_light_background" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyAddWorker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="Agregar trabajador nuevo" />
+
+                <Spinner
+                    android:id="@+id/spSectoresA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.90"
+                    android:visibility="gone"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="5">
+                    android:weightSum="2">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_weight="1">
-
-                        <TextView
-                            android:id="@+id/tvDt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Estadio 1: " />
-
-                        <EditText
-                            android:id="@+id/txtEstadio1"
-                            android:layout_height="wrap_content"
+                        <Spinner
+                            android:id="@+id/spSectores"
                             android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.90"/>
+                    </LinearLayout>
 
-                            android:inputType="text"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <Spinner
+                            android:id="@+id/spClon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.90" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <Spinner
+                            android:id="@+id/spWorkerZone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.90" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -72,475 +269,287 @@
                         android:orientation="vertical"
                         android:layout_weight="1">
 
-                        <TextView
-                            android:id="@+id/tvNroLinea"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Estadio 2: " />
-
-                        <EditText
-                            android:id="@+id/txtEstadio2"
-                            android:layout_height="wrap_content"
+                        <Spinner
+                            android:id="@+id/spIndiceMazorca"
                             android:layout_width="match_parent"
-                            android:inputType="text"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
-                        <TextView
-                            android:id="@+id/tvEdad"
-                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Estadio 3: " />
-
-                        <EditText
-                            android:id="@+id/txtEstadio3"
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:inputType="text"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
-                        <TextView
-                            android:id="@+id/tvObservacion"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Estadio 4 " />
-
-                        <EditText
-                            android:id="@+id/txtEstadio4"
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:inputType="text"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
-                        <TextView
-                            android:id="@+id/tvNroArbol"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nro. Arbol: " />
-
-                        <EditText
-                            android:id="@+id/txtNroArbol"
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:inputType="text"/>
-
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.90" />
                     </LinearLayout>
 
                 </LinearLayout>
 
+
+
+
+
+                <Spinner
+                    android:id="@+id/spActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:visibility="gone"
+                    android:layout_weight="0.90" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtHoras"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.45"
+                        android:gravity="center"
+                        android:hint="horas"
+                        android:inputType="number"
+                        android:visibility="gone"
+                        android:textColorHint="#717171" />
+
+                    <EditText
+                        android:id="@+id/txtAdvance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.45"
+                        android:gravity="center"
+                        android:hint="Avance"
+                        android:inputType="number"
+                        android:visibility="gone"
+                        android:textColorHint="#717171" />
+
+                    <EditText
+                        android:id="@+id/txtQR"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.45"
+                        android:gravity="center"
+                        android:hint="QR"
+                        android:textColorHint="#717171" />
+
+                </LinearLayout>
             </LinearLayout>
 
-
-
-
-
-            <TextView
-                android:id="@+id/tvCuadrilla"
-                android:layout_width="wrap_content"
+            <GridLayout
+                android:id="@+id/lyButtons"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="Fecha: " />
-
-            <LinearLayout
-                android:id="@+id/lyQR"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/txtQr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:layout_weight="1"
-                    android:text="QR: LOSTIGRES" />
+                android:layout_gravity="center"
+                android:columnCount="3"
+                android:rowCount="2"
+                android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnQrReader"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btnAdd"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.33"
+                    android:background="@color/colorPrimary"
+                    android:text="Agregar"
+                    android:textColor="@android:color/white" />
+
+
+                <Button
+                    android:id="@+id/btnDelete"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.33"
+                    android:background="@color/colorPrimary"
+                    android:text="Borrar"
+                    android:textColor="@android:color/white" />
+                a
+                <Button
+                    android:id="@+id/btnExport"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="fill"
+                    android:background="@color/colorPrimary"
+                    android:text="Exportar"
+                    android:textColor="@android:color/white" />
+
+
+
+                <Button
+                    android:id="@+id/btnSave"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@color/colorPrimary"
-                    android:text="Escanear Qr"
-                    android:textColor="@color/cardview_light_background" />
-            </LinearLayout>
-        </LinearLayout>
+                    android:text="Grabar"
+                    android:textColor="@android:color/white" />
 
-        <LinearLayout
-            android:id="@+id/lyAddWorker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="Agregar trabajador nuevo" />
-
-            <Spinner
-                android:id="@+id/spSectoresA"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="0.90"
-                android:visibility="gone"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-                    <Spinner
-                        android:id="@+id/spSectores"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="0.90"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-                    <Spinner
-                        android:id="@+id/spClon"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="0.90" />
-                </LinearLayout>
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-                    <Spinner
-                        android:id="@+id/spWorkerZone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="0.90" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-
-                    <Spinner
-                        android:id="@+id/spIndiceMazorca"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="0.90" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-
-
-
-            <Spinner
-                android:id="@+id/spActivity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:visibility="gone"
-                android:layout_weight="0.90" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/txtHoras"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.45"
-                    android:gravity="center"
-                    android:hint="horas"
-                    android:inputType="number"
-                    android:visibility="gone"
-                    android:textColorHint="#717171" />
-
-                <EditText
-                    android:id="@+id/txtAdvance"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.45"
-                    android:gravity="center"
-                    android:hint="Avance"
-                    android:inputType="number"
-                    android:visibility="gone"
-                    android:textColorHint="#717171" />
-
-                <EditText
-                    android:id="@+id/txtQR"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.45"
-                    android:gravity="center"
-                    android:hint="QR"
-                    android:textColorHint="#717171" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <GridLayout
-            android:id="@+id/lyButtons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:columnCount="3"
-            android:rowCount="2"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnAdd"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start|top"
-                android:layout_margin="5dp"
-                android:layout_weight="0.33"
-                android:background="@color/colorPrimary"
-                android:text="Agregar"
-                android:textColor="@android:color/white" />
-
-
-            <Button
-                android:id="@+id/btnDelete"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="5dp"
-                android:layout_weight="0.33"
-                android:background="@color/colorPrimary"
-                android:text="Borrar"
-                android:textColor="@android:color/white" />
-a
                 <Button
-                android:id="@+id/btnExport"
-                android:layout_margin="5dp"
-                android:layout_gravity="fill"
-                android:background="@color/colorPrimary"
-                android:text="Exportar"
-                android:textColor="@android:color/white" />
+                    android:id="@+id/btnSicRec"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.33"
+                    android:background="@color/colorPrimary"
+                    android:text="SIC.RECIBIR"
+                    android:textColor="@android:color/white" />
+
+                <!--Button
+                    android:id="@+id/btnSicEnv"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorPrimary"
+                    android:text="SIC.ENVIAR"
+                    android:textColor="@android:color/white" /-->
 
 
+                <Button
+                    android:id="@+id/btnRestore"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.33"
+                    android:background="@color/colorPrimary"
+                    android:text="Restaurar"
+                    android:visibility="gone"
+                    android:textColor="@android:color/white" />
+            </GridLayout>
 
-            <Button
-                android:id="@+id/btnSave"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@color/colorPrimary"
-                android:text="Grabar"
-                android:textColor="@android:color/white" />
-
-            <Button
-                android:id="@+id/btnSicRec"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="5dp"
-                android:layout_weight="0.33"
-                android:background="@color/colorPrimary"
-                android:text="SIC.RECIBIR"
-                android:textColor="@android:color/white" />
-
-            <!--Button
-                android:id="@+id/btnSicEnv"
-                android:layout_margin="5dp"
-                android:background="@color/colorPrimary"
-                android:text="SIC.ENVIAR"
-                android:textColor="@android:color/white" /-->
-
-
-            <Button
-                android:id="@+id/btnRestore"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill"
-                android:layout_margin="5dp"
-                android:layout_weight="0.33"
-                android:background="@color/colorPrimary"
-                android:text="Restaurar"
-                android:visibility="gone"
-                android:textColor="@android:color/white" />
-        </GridLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#C8C4C4"
-            android:paddingBottom="10dp"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:id="@+id/lytb"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:orientation="vertical"
-                >
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#C8C4C4"
+                android:paddingBottom="10dp"
+                android:scrollbars="none">
 
                 <LinearLayout
-                    android:id="@+id/lycb"
+                    android:id="@+id/lytb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical"
+                    >
 
-                    <TextView
-                        android:id="@+id/Id_tdId"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:id="@+id/lycb"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0"
-                        android:gravity="center"
-                        android:text="tdId"
-                        android:textColor="@android:color/white"
-                        android:textSize="0dp"
-                        android:textStyle="bold" />
+                        android:background="@color/colorPrimary"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.6"
-                        android:gravity="center"
-                        android:text="Zona Trabajo"
-                        android:textColor="@android:color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/Id_tdId"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:gravity="center"
+                            android:text="tdId"
+                            android:textColor="@android:color/white"
+                            android:textSize="0dp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.6"
-                        android:gravity="center"
-                        android:text="Parcela"
-                        android:textColor="@android:color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Zona Trabajo"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.6"
-                        android:gravity="center"
-                        android:text="Indice Maiz"
-                        android:textColor="@android:color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Parcela"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.6"
-                        android:gravity="center"
-                        android:text="Clon"
-                        android:textColor="@android:color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Indice Maiz"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.6"
-                        android:gravity="center"
-                        android:text="Nro Arbol"
-                        android:textColor="@android:color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Clon"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
-                    android:gravity="center"
-                    android:text="Estadio 1"
-                    android:textColor="@android:color/white"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.6"
-                        android:gravity="center"
-                        android:text="Estadio 2"
-                        android:textColor="@android:color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.6"
-                        android:gravity="center"
-                        android:text="Estadio 3"
-                        android:textColor="@android:color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.6"
-                        android:gravity="center"
-                        android:text="Estadio 4"
-                        android:textColor="@android:color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Nro Arbol"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.6"
-                        android:gravity="center"
-                        android:text="QR"
-                        android:textColor="@android:color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Estadio 1"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Estadio 2"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Estadio 3"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Estadio 4"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="QR"
+                            android:textColor="@android:color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TableLayout
+                        android:id="@+id/tabla"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></TableLayout>
                 </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 
-                <TableLayout
-                    android:id="@+id/tabla"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"></TableLayout>
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>
